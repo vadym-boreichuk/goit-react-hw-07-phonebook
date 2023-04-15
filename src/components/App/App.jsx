@@ -16,7 +16,7 @@ export const App = () => {
       <Div>
         <Title>Phonebook</Title>
 
-        <ContactForm />
+ <ContactForm />
       </Div>
       <Div>
         <Title>Contacts</Title>

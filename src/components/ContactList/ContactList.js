@@ -8,13 +8,13 @@ import { fetchContacts } from 'redux/operations';
 
 export const ContactList = () => {
   // Отримуємо частини стану
-  const state = useSelector(selectContacts);
-
+  const state = useSelector( state => state.contacts.contacts);
+console.log(state)
   return (
     <Div>
       <List>
         {state &&
-          state.map(({ id, name, phone }) => (
+          state.map((  {name, phone, id} ) => (
             <ContactItem key={id} name={name} phone={phone} id={id} />
           ))}
       </List>

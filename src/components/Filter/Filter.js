@@ -4,13 +4,16 @@ import { addFilter } from 'redux/filterSlice';
 
 export const Filter = () => {
   const dispatch = useDispatch();
+  const handlerFilter = evt => {
+    dispatch(addFilter(evt.target.value));
+  };
 
   return (
     <Label>
       Find contacts by name
       <Input
         name="filter"
-        onChange={event => dispatch(addFilter(event.currentTarget.value))}
+        onChange={handlerFilter}
       />
     </Label>
   );

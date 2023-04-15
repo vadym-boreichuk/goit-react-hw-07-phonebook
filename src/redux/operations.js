@@ -10,7 +10,7 @@ export const fetchContacts = createAsyncThunk(
     try {
       const response = await axios.get('/contacts');
       // При успішному запиті повертаємо проміс із даними
-      return response.data;
+      return response.data
     } catch (e) {
       // При помилці запиту повертаємо проміс
       // який буде відхилений з текстом помилки
@@ -26,7 +26,8 @@ export const fetchDeleteContact = createAsyncThunk(
       const id = useSelector(state => state.contacts.id);
       const response = await axios.delete(`/${id}`);
       // При успішному запиті повертаємо проміс із даними
-      console.log(id);
+      const user = JSON.parse(response.data)
+      console.log(user)
       return response.data;
       //   return response.data;
     } catch (e) {
@@ -37,7 +38,7 @@ export const fetchDeleteContact = createAsyncThunk(
   }
 );
 
-export const removingContact = createAsyncThunk(
+export const deleteContact = createAsyncThunk(
   'contact/remove',
   async (id, { rejectWithValue }) => {
     try {
@@ -59,21 +60,24 @@ export const removingContact = createAsyncThunk(
 //   return Boolean(result);
 // };
 
+
 export const addContact = createAsyncThunk(
   'contacts/add',
-  async (data, { rejectWithValue }) => {
+  async ({name, number}, thunkAPI) => {
     try {
-      console.log(data);
-      const dat = JSON.stringify(data);
-      console.log(dat);
+      const response = await axios.post('/contacts', { name, number });
+      return response.data;
+      // console.log(data);
+      // const userStringify = JSON.stringify(data)
 
-      const result = await axios.post(data);
-      return result;
+      // console.log(userStringify)
+      // const result = await axios.post(userStringify);
+      // return result;
     } catch (error) {
-      return rejectWithValue(error);
+      return thunkAPI.rejectWithValue(error);
     }
   },
-  {
+  // {
     // condition: (data, { getState }) => {
     //   const { contacts } = getState();
     //   if (isDublicate(data, contacts.items)) {
@@ -81,5 +85,17 @@ export const addContact = createAsyncThunk(
     //     return false;
     //   }
     // },
+  // }
+);
+
+export const addContac = createAsyncThunk(
+  'contacts/addContact',
+  async ({ name, phone}, thunkAPI) => {
+    try {
+      const response = await axios.post('/contacts', { name, phone});
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
 );

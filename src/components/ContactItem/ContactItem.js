@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { Button, Item, Parag } from './ContactItem.styled';
 import { useDispatch } from 'react-redux';
-import { removingContact } from 'redux/operations';
+import { deleteContact } from 'redux/operations';
 
 export const ContactItem = ({ name, phone, id }) => {
   const dispatch = useDispatch();
@@ -11,13 +11,13 @@ export const ContactItem = ({ name, phone, id }) => {
       <Parag>
         {name}: {phone}
       </Parag>
-      <Button onClick={() => dispatch(removingContact(id))}>Delete</Button>
+      <Button onClick={() => dispatch(deleteContact(id))}>Delete</Button>
     </Item>
   );
 };
 
-ContactItem.propTypes = {
-  name: PropTypes.string.isRequired,
-  phone: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-};
+// ContactItem.propTypes = {
+//   name: PropTypes.string.isRequired,
+//   phone: PropTypes.string.isRequired,
+//   id: PropTypes.string.isRequired,
+// };

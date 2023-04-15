@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { nanoid } from 'nanoid';
-import { fetchContacts, addContact, removingContact } from './operations';
+import { fetchContacts, addContact, deleteContact } from './operations';
 
 // const contactsInitialState = [
 //   { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
@@ -39,21 +38,23 @@ const contactSlice = createSlice({
     },
     [addContact.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
-      state.contacts = state.contacts + payload;
+      // return [...state.contacts, payload];
+      state.contacts.push(payload);
+      // return state.contacts
     },
     [addContact.rejected]: (state, { payload }) => {
       state.isLoading = false;
       state.error = payload;
     },
-    [removingContact.pending]: state => {
+    [deleteContact.pending]: state => {
       state.isLoading = true;
       state.error = null;
     },
-    [removingContact.fulfilled]: (state, { payload }) => {
+    [deleteContact.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
       state.contacts = state.contacts.filter(item => item.id !== payload);
     },
-    [removingContact.rejected]: (state, { payload }) => {
+    [deleteContact.rejected]: (state, { payload }) => {
       state.isLoading = false;
       state.error = payload;
     },

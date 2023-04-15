@@ -1,6 +1,6 @@
-import { nanoid } from 'nanoid';
+// import { nanoid } from 'nanoid';
 import { Button, Form, Input, Label } from './Form.styled';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { addContact } from 'redux/operations';
 
@@ -11,10 +11,10 @@ export const ContactForm = () => {
   const addCont = event => {
     event.preventDefault();
     const name = event.currentTarget.elements.name.value;
-    const number = event.currentTarget.elements.number.value;
+    const phone = event.currentTarget.elements.number.value;
     // const normalizedName = name.toLowerCase();
 
-    dispatch(addContact({ name, number, id: nanoid() }));
+    dispatch(addContact({ name, phone}));
 
     event.currentTarget.reset();
   };
