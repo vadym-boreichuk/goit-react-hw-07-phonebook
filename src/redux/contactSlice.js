@@ -59,19 +59,7 @@ const contactSlice = createSlice({
       state.error = payload;
     },
   },
-  // deleteContact(state, action) {
-  //   return state.filter(contact => contact.id !== action.payload);
-  // },
-  // },
 });
-// Генератори екшенів
-// export const {
-//   fetchingInProgress,
-//   fetchingSuccess,
-//   fetchingError,
-//   addContact,
-//   deleteContact,
-// } = contactSlice.actions;
-// export const { addContact, deleteContact } = contactSlice.actions;
+
 // Редюсер слайсу
 export const contactReducer = contactSlice.reducer;

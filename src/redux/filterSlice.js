@@ -12,11 +12,6 @@ const filterSlice = createSlice({
       },
     },
   },
-  // reducers: {
-  //   addFilter(_, action) {
-  //     return action.payload;
-  //   },
-  // },
 });
 
 export const filterReducer = filterSlice.reducer;

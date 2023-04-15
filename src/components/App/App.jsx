@@ -1,3 +1,4 @@
+import { ToastContainer } from 'react-toastify';
 import { Filter } from '../Filter/Filter';
 import { ContactList } from '../ContactList/ContactList';
 import { ContactForm } from '../ContactForm/Form';
@@ -15,14 +16,26 @@ export const App = () => {
     <Container>
       <Div>
         <Title>Phonebook</Title>
-
- <ContactForm />
+        <ContactForm />
       </Div>
       <Div>
         <Title>Contacts</Title>
         <Filter />
         <ContactList />
       </Div>
+      <ToastContainer
+        font-size="15px"
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </Container>
   );
 };
